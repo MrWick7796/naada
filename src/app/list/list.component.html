@@ -1,0 +1,49 @@
+<div class="main-div">
+  <!-- <div *ngFor="let s of songs; let i = index; trackBy: trackSongsByID"> -->
+  <div *ngIf="songs.length > 0" class="card-div">
+    <mat-card
+      *ngFor="let s of songs; let i = index"
+      class="card"
+      [class.card-disabled]="uploadIndex > i"
+    >
+      <mat-card-content>
+        <div class="card-content">
+          <div class="col-4">
+            <img
+              [src]="s?.image"
+              width="100"
+              height="100"
+              alt="Image FILE Preview"
+            />
+          </div>
+          <div class="col-8" style="margin-left: 25px;">
+            <div class="row">
+              {{ s?.name }}
+            </div>
+            <br />
+            <div class="row">{{ s?.artist }} - {{ s?.album }}</div>
+            <br />
+            <div style="margin-left: -15px;">{{ s?.url }}</div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div style="position: absolute;width: 80%;bottom: 0;" class="row">
+    <div class="col" style="padding-left: 0;padding-right: 0;">
+      <button
+        class="btn btn-primary"
+        (click)="pushToFireBase()"
+        [disabled]="+(+uploadIndex) >= songs.length || songs.length == 0"
+      >
+        Next
+      </button>
+    </div>
+
+    <div class="col" style="padding-left: 0;padding-right: 0;">
+      <button class="btn btn-danger" (click)="clearQueue()">
+        Clear
+      </button>
+    </div>
+  </div>
+</div>

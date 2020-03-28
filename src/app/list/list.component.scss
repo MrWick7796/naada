@@ -1,0 +1,31 @@
+.main-div {
+  height: 90%;
+}
+
+.card-div {
+  position: absolute;
+  height: 90%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.card {
+  margin: 10px;
+  width: 425px;
+  box-shadow: 5px 5px 10px #888888;
+}
+
+.card-disabled {
+  background-color: #bebebe;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: row;
+}
+
+button {
+  position: absolute;
+  bottom: 0;
+  left: 45%;
+}

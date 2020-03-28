@@ -1,0 +1,68 @@
+@font-face {
+  font-family: "naada";
+  src: url("../assets/Tr2n.ttf");
+}
+
+.header {
+  font: 2rem naada;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: black;
+  height: 50px;
+  color: aqua;
+}
+
+.form {
+  margin: 5%;
+}
+
+.form-data {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dropzone {
+  width: 200px;
+  height: 200px;
+  border: 4px dashed grey;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+
+  &.hovering {
+    border: 4px dashed rgb(89, 144, 245);
+  }
+}
+
+.drop-text {
+  margin: 10px;
+  font-style: italic;
+}
+
+.image-upload {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  text-align: center;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  text-align: center;
+}
+
+:-ms-input-placeholder {
+  text-align: center;
+}

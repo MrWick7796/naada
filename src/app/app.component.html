@@ -1,0 +1,105 @@
+<ngx-spinner>
+  <p class="loading">Uploading Image</p>
+</ngx-spinner>
+<div class="header">
+  <span>
+    NAADA
+  </span>
+</div>
+<div class="row form">
+  <div class="col-7">
+    <form
+      [formGroup]="songMetadata"
+      (submit)="onSubmit(songMetadata)"
+      #formDirective="ngForm"
+    >
+      <div class="row">
+        <div class="col form-data">
+          <mat-form-field>
+            <mat-label>Song Name</mat-label>
+            <input matInput formControlName="songName" />
+          </mat-form-field>
+          <br />
+          <mat-form-field>
+            <mat-label>Artist Name</mat-label>
+            <input matInput formControlName="artistName" />
+          </mat-form-field>
+          <br />
+          <mat-form-field>
+            <mat-label>Album Name</mat-label>
+            <input matInput formControlName="albumName" />
+          </mat-form-field>
+          <br />
+          <mat-form-field>
+            <mat-label>Spotify URL</mat-label>
+            <input matInput formControlName="url" />
+          </mat-form-field>
+          <br />
+          <mat-form-field>
+            <mat-label>Other Description</mat-label>
+            <textarea
+              matInput
+              formControlName="description"
+              rows="4"
+            ></textarea>
+          </mat-form-field>
+          <br />
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="
+              songMetadata.invalid ||
+              (!isImageFileSelected && !isImageURLEntered)
+            "
+          >
+            Submit
+          </button>
+        </div>
+        <div class="col image-upload">
+          <div
+            dropZone
+            class="text-center dropzone"
+            (hovered)="changeIsHover($event)"
+            (dropped)="fileDropped($event)"
+            [class.hovering]="isHovering"
+          >
+            <img
+              *ngIf="isImageFileSelected || isImageURLEntered"
+              [src]="isImageFileSelected === true ? imagePreview : imageURL"
+              alt=""
+              width="192"
+              height="190"
+            />
+            <div
+              class="drop-text"
+              *ngIf="!isImageFileSelected && !isImageURLEntered"
+            >
+              Drag And Drop File Here
+            </div>
+          </div>
+          <input
+            type="text"
+            placeHolder="Or Enter URL"
+            formControlName="enteredURL"
+            (blur)="loadPreviewFromURL(songMetadata)"
+          />
+          <br />
+          <label for="files" class="btn btn-primary">Or Select Image</label>
+          <br />
+          <input
+            id="files"
+            style="visibility:hidden;"
+            type="file"
+            (change)="fileSelected($event)"
+          />
+          <br />
+          <!-- <input type="file" /> -->
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- List View -->
+  <div class="col-5">
+    <list></list>
+  </div>
+</div>
